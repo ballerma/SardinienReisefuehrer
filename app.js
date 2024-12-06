@@ -60,4 +60,10 @@ document.addEventListener('DOMContentLoaded', () => {
             return 'Es gab einen Fehler bei der Übersetzung.';
         }
     }
+
+    // Placeholder für zukünftige Fotoübersetzungsfunktion
+document.addEventListener("DOMContentLoaded", function() {
+  console.log("Willkommen auf der Sardinien-Seite! Die Fotoübersetzungsfunktion ist noch nicht aktiv.");
+});
+
 });
