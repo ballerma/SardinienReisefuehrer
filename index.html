@@ -8,6 +8,19 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <!-- Navigationsmenü -->
+  <nav>
+    <div class="container">
+      <ul>
+        <li><a href="#intro">Willkommen</a></li>
+        <li><a href="#highlights">Sehenswürdigkeiten</a></li>
+        <li><a href="#tips">Reisetipps</a></li>
+        <li><a href="uebersetzer.html">Fotoübersetzer</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Header -->
   <header>
     <div class="container">
       <h1>Sardinien Reiseführer</h1>
@@ -15,28 +28,35 @@
     </div>
   </header>
 
-  <section class="intro">
+  <!-- Einführung Abschnitt -->
+  <section id="intro" class="intro">
     <div class="container">
       <h2>Willkommen auf Sardinien</h2>
       <p>Sardinien, die zweitgrößte Insel im Mittelmeer, verzaubert mit ihren malerischen Stränden, antiken Ruinen und einer reichen Kultur. Hier finden Sie eine perfekte Mischung aus Natur, Geschichte und traditioneller Küche.</p>
     </div>
   </section>
 
-  <section class="highlights">
+  <!-- Highlights (Sehenswürdigkeiten) Abschnitt -->
+  <section id="highlights" class="highlights">
     <div class="container">
       <h2>Beliebte Sehenswürdigkeiten</h2>
+      <ul>
+        <li><a href="#la-maddalena">La Maddalena Archipel</a></li>
+        <li><a href="#cagliari">Cagliari Altstadt</a></li>
+        <li><a href="#nuraghen">Nuraghen von Barumini</a></li>
+      </ul>
       <div class="sehenswuerdigkeiten">
-        <div class="highlight">
+        <div id="la-maddalena" class="highlight">
           <img src="https://www.sardinien.com/wp-content/uploads/2022/06/la-maddalena-archipel.jpg" alt="La Maddalena Archipel">
           <h3>La Maddalena Archipel</h3>
           <p>Ein wunderschönes Archipel vor der Nordküste Sardiniens. Es ist bekannt für seine kristallklaren Gewässer und unberührten Strände, die ideal für Bootsfahrten sind.</p>
         </div>
-        <div class="highlight">
+        <div id="cagliari" class="highlight">
           <img src="https://www.sardinien.com/wp-content/uploads/2022/06/cagliari.jpg" alt="Cagliari Altstadt">
           <h3>Cagliari Altstadt</h3>
           <p>Die Hauptstadt Sardiniens bietet eine Mischung aus antiker Architektur und modernen Elementen. Die Altstadt mit ihren engen Gassen und historischen Bauten ist ein Highlight.</p>
         </div>
-        <div class="highlight">
+        <div id="nuraghen" class="highlight">
           <img src="https://www.sardinien.com/wp-content/uploads/2022/06/nero-ponte.jpg" alt="Nuraghen von Barumini">
           <h3>Nuraghen von Barumini</h3>
           <p>Diese prähistorischen Türme sind ein UNESCO-Weltkulturerbe und bieten einen faszinierenden Einblick in die Vergangenheit Sardiniens.</p>
@@ -45,7 +65,8 @@
     </div>
   </section>
 
-  <section class="tips">
+  <!-- Reisetipps Abschnitt -->
+  <section id="tips" class="tips">
     <div class="container">
       <h2>Reisetipps für Sardinien</h2>
       <ul>
@@ -57,6 +78,7 @@
     </div>
   </section>
 
+  <!-- Footer -->
   <footer>
     <div class="container">
       <p>© 2024 Sardinien Reiseführer. Alle Rechte vorbehalten.</p>
