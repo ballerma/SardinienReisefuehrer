@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Fotoübersetzer</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Navigationsmenü -->
+  <nav>
+    <div class="container">
+      <ul>
+        <li><a href="index.html">Willkommen</a></li>
+        <li><a href="index.html#highlights">Sehenswürdigkeiten</a></li>
+        <li><a href="index.html#tips">Reisetipps</a></li>
+        <li><a href="uebersetzer.html">Fotoübersetzer</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <h1>Fotoübersetzer</h1>
+      <p>Laden Sie ein Foto hoch, um die Textübersetzung in verschiedenen Sprachen zu erhalten.</p>
+    </div>
+  </header>
+
+  <!-- Fotoübersetzer Abschnitt -->
+  <section id="translator" class="translator">
+    <div class="container">
+      <h2>Bild hochladen</h2>
+      <form id="uploadForm">
+        <label for="fileUpload">Wählen Sie ein Bild zum Übersetzen:</label>
+        <input type="file" id="fileUpload" name="fileUpload" accept="image/*">
+        <button type="submit">Bild hochladen</button>
+      </form>
+      <div id="translationResult">
+        <p>Übersetzung erscheint hier...</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>© 2024 Sardinien Reiseführer. Alle Rechte vorbehalten.</p>
+    </div>
+  </footer>
+
+  <script src="uebersetzer.js"></script>
+</body>
+</html>
