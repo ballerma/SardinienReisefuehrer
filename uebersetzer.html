@@ -3,53 +3,160 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Fotoübersetzer</title>
-  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Einfaches CSS für Layout */
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .translator-box {
+      display: flex;
+      flex-direction: column;
+      width: 60%;
+      max-width: 600px;
+      margin-bottom: 20px;
+    }
+
+    .language-direction {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+
+    .language-button {
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    .text-input, .translated-text {
+      padding: 10px;
+      font-size: 16px;
+      margin-bottom: 10px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .translate-arrow {
+      cursor: pointer;
+      font-size: 24px;
+    }
+
+    #fileUpload {
+      margin-top: 20px;
+    }
+
+  </style>
 </head>
 <body>
-  <!-- Navigationsmenü -->
-  <nav>
-    <div class="container">
-      <ul>
-        <li><a href="index.html">Willkommen</a></li>
-        <li><a href="index.html#highlights">Sehenswürdigkeiten</a></li>
-        <li><a href="index.html#tips">Reisetipps</a></li>
-        <li><a href="uebersetzer.html">Fotoübersetzer</a></li>
-      </ul>
-    </div>
-  </nav>
+  <div class="container">
+    <h1>Fotoübersetzer und Echtzeit-Textübersetzung</h1>
 
-  <!-- Header -->
-  <header>
-    <div class="container">
-      <h1>Fotoübersetzer</h1>
-      <p>Laden Sie ein Foto hoch, um den Text zu extrahieren und zu übersetzen.</p>
-    </div>
-  </header>
-
-  <!-- Fotoübersetzer Abschnitt -->
-  <section id="translator" class="translator">
-    <div class="container">
-      <h2>Bild hochladen</h2>
-      <form id="uploadForm">
-        <label for="fileUpload">Wählen Sie ein Bild zum Übersetzen:</label>
-        <input type="file" id="fileUpload" name="fileUpload" accept="image/*">
-        <button type="submit">Bild hochladen</button>
-      </form>
-      <div id="translationResult">
-        <p>Übersetzung erscheint hier...</p>
+    <!-- Übersetzungsbereich -->
+    <div class="translator-box">
+      <div class="language-direction">
+        <button class="language-button" id="switchDirection">DE → IT</button>
       </div>
+      <textarea class="text-input" id="textInput" placeholder="Geben Sie einen deutschen Text ein..." oninput="translateText()"></textarea>
+      <div class="translated-text" id="translatedText">Übersetzung wird hier angezeigt...</div>
     </div>
-  </section>
 
-  <!-- Footer -->
-  <footer>
-    <div class="container">
-      <p>© 2024 Sardinien Reiseführer. Alle Rechte vorbehalten.</p>
+    <!-- Fotoübersetzer -->
+    <div class="photo-translate">
+      <input type="file" id="fileUpload" accept="image/*">
+      <div id="translationResult"></div>
     </div>
-  </footer>
+  </div>
 
-  <script src="uebersetzer.js"></script>
-</body>
-</html>
+  <script>
+    // Google Translate API Key
+    const apiKey = "DEIN_GOOGLE_API_KEY"; // Ersetze hier mit deinem echten API-Key
+
+    // Übersetzungsrichtung
+    let fromLang = 'de';
+    let toLang = 'it';
+
+    // Übersetzungsfunktion für den Textbereich
+    function translateText() {
+      const text = document.getElementById("textInput").value;
+
+      if (text.trim() === "") {
+        document.getElementById("translatedText").innerText = "Übersetzung wird hier angezeigt...";
+        return;
+      }
+
+      // API-Request für Übersetzung
+      fetch(`https://translation.googleapis.com/language/translate/v2?key=${apiKey}`, {
+        method: 'POST',
+        body: JSON.stringify({
+          q: text,
+          source: fromLang,
+          target: toLang,
+        }),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+      .then(response => response.json())
+      .then(data => {
+        const translatedText = data.data.translations[0].translatedText;
+        document.getElementById("translatedText").innerText = translatedText;
+      })
+      .catch(error => {
+        console.error('Fehler bei der Übersetzung:', error);
+        document.getElementById("translatedText").innerText = "Fehler bei der Übersetzung.";
+      });
+    }
+
+    // Funktion zum Wechseln der Sprachrichtung
+    document.getElementById("switchDirection").addEventListener('click', function() {
+      if (fromLang === 'de' && toLang === 'it') {
+        fromLang = 'it';
+        toLang = 'de';
+        document.getElementById("switchDirection").innerText = "IT → DE";
+      } else {
+        fromLang = 'de';
+        toLang = 'it';
+        document.getElementById("switchDirection").innerText = "DE → IT";
+      }
+      translateText(); // Sofortige Übersetzung nach dem Wechsel
+    });
+
+    // Funktion zur Texterkennung mit Fotoübersetzer (Tesseract.js)
+    document.getElementById("fileUpload").addEventListener("change", function(event) {
+      const file = event.target.files[0];
+      if (file) {
+        document.getElementById("translationResult").innerHTML = "<p>Bild wird verarbeitet...</p>";
+
+        const reader = new FileReader();
+        reader.onload = function(event) {
+          const imageUrl = event.target.result;
+
+          // Texterkennung mit Tesseract.js
+          Tesseract.recognize(
+            imageUrl,
+            fromLang, // Quelle: Basierend auf der aktuellen Sprachrichtung
+            {
+              logger: (m) => console.log(m),
+            }
+          ).then(({ data: { text } }) => {
+            document.getElementById("translationResult").innerHTML = `<p>Erkannter Text: ${text}</p>`;
+            // Übersetzung des erkannten Textes
+            translateTextFromImage(text);
+          }).catch((error) => {
+            console.error("Fehler bei der Texterkennung:", error);
+            document.getElementById("translationResult").innerHTML = "<p>Fehler bei der Texterkennung.</p>";
+          });
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+
+    // Funktion zur Übersetzung des Textes aus dem Bild
+    function translateTextFromImage(text) {
+      fetch(`https://translation.googleapis.com/language/translate/v2?key=${apiKey}`, {
+        method: 'POST',
+        body: JSO
