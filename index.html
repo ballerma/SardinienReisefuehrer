@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sardinien Reiseführer</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="login-container">
+        <h1>Sardinien Reiseführer</h1>
+        <form id="login-form">
+            <input type="password" id="password" placeholder="Passwort" required>
+            <button type="submit">Anmelden</button>
+        </form>
+        <div id="error-message"></div>
+    </div>
+    <div id="content-container" style="display: none;">
+        <h2>Willkommen!</h2>
+        <p id="content">Lade Inhalte...</p>
+        <input type="file" id="image-upload" accept="image/*">
+        <button id="translate-button">Übersetzen</button>
+        <p id="translation-output"></p>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
