@@ -1,30 +1,68 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sardinien Reiseführer</title>
-    <link rel="stylesheet" href="styles.css">
-    <!-- Tesseract.js einbinden -->
-    <script src="https://cdn.jsdelivr.net/npm/tesseract.js@2/dist/tesseract.min.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Sardinien Reiseführer</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div id="login-container">
-        <h1>Sardinien Reiseführer</h1>
-        <form id="login-form">
-            <input type="password" id="password" placeholder="Passwort" required>
-            <button type="submit">Anmelden</button>
-        </form>
-        <div id="error-message"></div>
+  <header>
+    <div class="container">
+      <h1>Sardinien Reiseführer</h1>
+      <p>Entdecken Sie die Schönheit von Sardinien - Tipps, Sehenswürdigkeiten und Empfehlungen für Ihren Urlaub</p>
     </div>
-    <div id="content-container" style="display: none;">
-        <h2>Willkommen!</h2>
-        <p id="content">Lade Inhalte...</p>
-        <input type="file" id="image-upload" accept="image/*">
-        <button id="translate-button">Übersetzen</button>
-        <p id="translation-output"></p>
+  </header>
+
+  <section class="intro">
+    <div class="container">
+      <h2>Willkommen auf Sardinien</h2>
+      <p>Sardinien, die zweitgrößte Insel im Mittelmeer, verzaubert mit ihren malerischen Stränden, antiken Ruinen und einer reichen Kultur. Hier finden Sie eine perfekte Mischung aus Natur, Geschichte und traditioneller Küche.</p>
     </div>
-    <!-- Stelle sicher, dass das richtige Skript eingebunden ist -->
-    <script src="app.js"></script>
+  </section>
+
+  <section class="highlights">
+    <div class="container">
+      <h2>Beliebte Sehenswürdigkeiten</h2>
+      <div class="sehenswuerdigkeiten">
+        <div class="highlight">
+          <img src="https://www.sardinien.com/wp-content/uploads/2022/06/la-maddalena-archipel.jpg" alt="La Maddalena Archipel">
+          <h3>La Maddalena Archipel</h3>
+          <p>Ein wunderschönes Archipel vor der Nordküste Sardiniens. Es ist bekannt für seine kristallklaren Gewässer und unberührten Strände, die ideal für Bootsfahrten sind.</p>
+        </div>
+        <div class="highlight">
+          <img src="https://www.sardinien.com/wp-content/uploads/2022/06/cagliari.jpg" alt="Cagliari Altstadt">
+          <h3>Cagliari Altstadt</h3>
+          <p>Die Hauptstadt Sardiniens bietet eine Mischung aus antiker Architektur und modernen Elementen. Die Altstadt mit ihren engen Gassen und historischen Bauten ist ein Highlight.</p>
+        </div>
+        <div class="highlight">
+          <img src="https://www.sardinien.com/wp-content/uploads/2022/06/nero-ponte.jpg" alt="Nuraghen von Barumini">
+          <h3>Nuraghen von Barumini</h3>
+          <p>Diese prähistorischen Türme sind ein UNESCO-Weltkulturerbe und bieten einen faszinierenden Einblick in die Vergangenheit Sardiniens.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tips">
+    <div class="container">
+      <h2>Reisetipps für Sardinien</h2>
+      <ul>
+        <li><strong>Beste Reisezeit:</strong> Mai bis Oktober – ideal für das Strandleben und Outdoor-Aktivitäten.</li>
+        <li><strong>Transport:</strong> Mietwagen sind empfehlenswert, um die Insel flexibel zu erkunden.</li>
+        <li><strong>Traditionelle Gerichte:</strong> Probieren Sie "Malloreddus" (sardische Pasta) und "Porcheddu" (Spanferkel).</li>
+        <li><strong>Strände:</strong> Cala Brandinchi und Spiaggia della Pelosa gehören zu den besten Stränden der Insel.</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>© 2024 Sardinien Reiseführer. Alle Rechte vorbehalten.</p>
+    </div>
+  </footer>
+
+  <script src="add.js"></script>
 </body>
 </html>
