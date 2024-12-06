@@ -11,11 +11,38 @@ body {
   color: #333;
 }
 
+/* Navigationsmenü */
+nav {
+  background-color: #1e3d58;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  padding: 10px 0;
+}
+
+nav ul {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+}
+
+nav ul li {
+  margin: 0 20px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 1.1rem;
+}
+
 /* Container für das Layout */
 .container {
   width: 90%;
   max-width: 1200px;
   margin: 0 auto;
+  padding-top: 60px; /* Für Abstand zu fixed Header */
 }
 
 /* Header */
@@ -62,6 +89,23 @@ header p {
   font-size: 2rem;
   text-align: center;
   margin-bottom: 40px;
+}
+
+.highlights ul {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  margin-bottom: 40px;
+}
+
+.highlights ul li {
+  margin: 0 15px;
+}
+
+.highlights ul li a {
+  text-decoration: none;
+  font-size: 1.2rem;
+  color: #1e3d58;
 }
 
 .sehenswuerdigkeiten {
@@ -120,10 +164,4 @@ header p {
 footer {
   background-color: #1e3d58;
   color: #fff;
-  padding: 20px 0;
-  text-align: center;
-}
-
-footer p {
-  font-size: 1rem;
-}
+  padding
